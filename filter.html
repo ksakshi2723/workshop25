@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+	</script>
+
+	<title>
+		change the date format using AngularJS ?
+	</title>
+</head>
+
+<body>
+	<div ng-app="MyApp">
+		<div ng-controller="MyCtrl">
+			Input Date in String Format: {{myDate}}<br>
+			Output Date : {{myDateFiltered}}
+		</div>
+	</div>
+
+	<script>
+		var app = angular.module('MyApp', []);
+
+		app.controller('MyCtrl', ['$scope', '$filter',
+				function ($scope, $filter) {
+			$scope.myDate = new Date('2013/07/21');
+			
+			$scope.myDateFiltered = $filter('date')
+					($scope.myDate, 'dd/MM/yy');
+		}]);
+	</script>
+</body>
+
+</html>
